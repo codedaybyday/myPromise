@@ -5,7 +5,7 @@ function MyPromise(fn) {
     _this.status = 'pending';
     _this.onFullfilled = null;
     _this.onRejected = null;
-    _this.onFullfilledCallBacks = [];
+    _this.onFullfilledCallBacks = []; // 链式操作，队列
     _this.onRejectedCallBacks = [];
 
     function resovle(value) {
@@ -41,4 +41,5 @@ MyPromise.prototype.then = function(onFullfilled, onRejected) {
     } else {
         this.onRejected(this.error)
     }
+    return this;
 }
